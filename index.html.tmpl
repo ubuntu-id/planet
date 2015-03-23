@@ -4,7 +4,7 @@
 	<title><TMPL_VAR name></title>
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 	<meta name="robots" content="index,follow" />
-	<link rel="stylesheet" type="text/css" href="css/style.css" />
+	<link rel="stylesheet" type="text/css" href="/ubuntu/style.css" />
 	<link rel="alternate" type="application/rss+xml" href="<TMPL_VAR link>rss20.xml" title="<TMPL_VAR name> RSS" />
     <link rel="shortcut icon" href="<TMPL_VAR link>images/favicon.ico" />
 </head>
@@ -22,7 +22,7 @@
 		<a href="https://launchpad.net/">Launchpad</a>
 	</li>
 	<li>
-		<a href="http://www.ubuntu.or.id">Ubuntu-ID</a>
+		<a href="http://www.ubuntu-id.org">Ubuntu-ID</a>
 	</li>
 	<li>
 		<a href="http://www.ubuntu.com">Ubuntu.com</a>
@@ -52,9 +52,9 @@
 	<div class="hentry post">
 		<div class="postHeader">
 <TMPL_IF channel_face>
-	<img class="face" src="heads/<TMPL_VAR channel_face ESCAPE="HTML">" alt="">
+	<img class="face" src="ubuntu/heads/<TMPL_VAR channel_face ESCAPE="HTML">" alt="">
 <TMPL_ELSE>
-	<img class="face" src="images/nobody.png" alt="">
+	<img class="face" src="ubuntu/images/nobody.png" alt="">
 </TMPL_IF>
 
 			<h2 class="entry-title"><a href="<TMPL_VAR link ESCAPE="HTML">" title="<TMPL_VAR channel_title_plain ESCAPE="HTML">"><TMPL_VAR title></a></h2>
