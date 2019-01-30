@@ -74,15 +74,15 @@
 #container
 {
 	margin: 0 0 0 20px;
-	width: 700px;
 	float: left;
+	width: 75%
 }
 
 #secondary
 {
 	margin: 40px 20px 0 0;
-	width: 224px;
 	float: right;
+	width: 20%
 }
 
 .post
@@ -105,14 +105,14 @@
 
 .post .postHeader h2
 {
-	width: 560px;
+/*	width: 560px; */
 	float: left;
 	margin-bottom: 4px;
 }
 
 .post .postHeader h3
 {
-	width: 560px;
+/*	width: 560px; */
 	float: left;
 	color: #aea79f;
 	margin-bottom: 16px;

@@ -58,8 +58,10 @@
 </TMPL_IF>
 
 			<h2 class="entry-title"><a href="<TMPL_VAR link ESCAPE="HTML">" title="<TMPL_VAR channel_title_plain ESCAPE="HTML">"><TMPL_VAR title></a></h2>
-
-<h3><TMPL_VAR channel_name></h3>
+			<br>
+			<br>
+			<br>
+			<h3><TMPL_VAR channel_name></h3>
 
 			<div class="clearBoth"></div>
 		</div>
@@ -68,7 +70,7 @@
 			<div class="clearBoth"></div>
 		</div>
 		<div class="entry-utility">
-			<span class="cat-links"><a href="<TMPL_VAR link ESCAPE="HTML">"> on <TMPL_VAR date><TMPL_IF category> tagged with <TMPL_VAR category></TMPL_IF></a></span>
+			<span class="cat-links"><a href="<TMPL_VAR link ESCAPE="HTML">">by <TMPL_VAR channel_name> on <TMPL_VAR date><TMPL_IF category> tagged with <TMPL_VAR category></TMPL_IF></a></span>
 		</div>
 	</div><!-- .post -->
 </TMPL_LOOP>
