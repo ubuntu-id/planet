@@ -7,5 +7,5 @@ RUN apt update && \
     apt install -y python-libxslt1 python-libxml2 python-genshi xsltproc \
     python-django git python-lxml vim python-librdf
 
-RUN git clone https://github.com/rubys/venus 
+RUN git clone https://github.com/rubys/venus /home/venus 
 WORKDIR /home/venus
