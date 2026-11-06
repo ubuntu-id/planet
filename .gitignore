@@ -1,1 +1,3 @@
 *.tmplc
+public/
+__pycache__/

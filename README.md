@@ -17,32 +17,21 @@ You need to:
 Planet Ubuntu ID is using planet venus and Ubuntu Theme, all copyrights
 goes to origin creator
 
-## How to install
+## How to build
 
-We use Debian based distro for generating planet, you can build your own planet by following below tutorials:
-
-### install requirement packages
-
-```
-apt install -y python-libxslt1 python-libxml2 python-genshi xsltproc python-django git python-lxml vim python-librdf nginx
-```
-
-
-### Copy planet venus and this repo
+Planet Venus (Python 2) sudah tidak dipakai. Situs sekarang dibangun oleh `build.py` (Python 3, feedparser + Jinja2)
+yang membaca `config.ini`, mengambil semua feed, lalu menulis situs statis ke `public/`.
 
 ```
-git clone https://github.com/rubys/venus/ /home/venus
-git clone https://github.com/ubuntu-id/planet.git /home/venus/themes/ubuntu
+python3 -m venv .venv && .venv/bin/pip install -r requirements.txt
+.venv/bin/python build.py
 ```
 
-### Generate planet and run nginx
+Feed yang gagal diambil dilewati dan dicatat di stderr. Hasilnya bisa disajikan oleh web server statis apa pun.
 
-To generate planet, you can execute below command
+### Cloudflare Pages
 
-```
-/usr/bin/python planet.py themes/ubuntu/config.ini
-systemctl start nginx
-```
-
-The output directory is /usr/share/nginx/html, that's a default www directory for nginx. You can check from
-browser http://localhost
+- Build command: `pip install -r requirements.txt && python build.py`
+- Build output directory: `public`
+- Python versi 3.13 dipilih lewat `.python-version`
+- Karena isinya statis, jadwalkan rebuild berkala dengan Deploy Hook (Settings > Builds) yang dipanggil `POST` dari cron.

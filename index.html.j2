@@ -1,12 +1,12 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" dir="ltr" lang="en">
 <head>
-	<title><TMPL_VAR name></title>
+	<title>{{ name }}</title>
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 	<meta name="robots" content="index,follow" />
 	<link rel="stylesheet" type="text/css" href="/ubuntu/style.css" />
-	<link rel="alternate" type="application/rss+xml" href="<TMPL_VAR link>rss20.xml" title="<TMPL_VAR name> RSS" />
-    <link rel="shortcut icon" href="<TMPL_VAR link>images/favicon.ico" />
+	<link rel="alternate" type="application/rss+xml" href="{{ link }}rss20.xml" title="{{ name }} RSS" />
+    <link rel="shortcut icon" href="/ubuntu/images/favicon.ico" />
 </head>
 
 <body class="blog">
@@ -31,7 +31,7 @@
 
 <div id="orangeHeader">
 	<h1>
-		<a href="<TMPL_VAR link>" title="<TMPL_VAR name>"><span><TMPL_VAR name></span></a>
+		<a href="{{ link }}" title="{{ name }}"><span>{{ name }}</span></a>
 	</h1>
 </div>
 
@@ -41,39 +41,33 @@
 		<div id="container">
 			<div id="content">
 
-			<TMPL_VAR admin>
-			
-<TMPL_LOOP Items>
+{% for e in items %}
 
-	<TMPL_IF new_date>
-		<h3 id="todaysDate"><TMPL_VAR new_date></h3>
-	</TMPL_IF>
+	{% if e.new_date %}
+		<h3 id="todaysDate">{{ e.new_date }}</h3>
+	{% endif %}
 
 	<div class="hentry post">
 		<div class="postHeader">
-<TMPL_IF channel_face>
-	<img class="face" src="ubuntu/heads/<TMPL_VAR channel_face ESCAPE="HTML">" alt="">
-<TMPL_ELSE>
-	<img class="face" src="ubuntu/images/nobody.png" alt="">
-</TMPL_IF>
+	<img class="face" src="/ubuntu/heads/{{ e.face }}" alt="">
 
-			<h2 class="entry-title"><a href="<TMPL_VAR link ESCAPE="HTML">" title="<TMPL_VAR channel_title_plain ESCAPE="HTML">"><TMPL_VAR title></a></h2>
+			<h2 class="entry-title"><a href="{{ e.link }}" title="{{ e.channel_title }}">{{ e.title }}</a></h2>
 			<br>
 			<br>
 			<br>
-			<h3><TMPL_VAR channel_name></h3>
+			<h3>{{ e.channel_name }}</h3>
 
 			<div class="clearBoth"></div>
 		</div>
 		<div class="entry-content">
-			<TMPL_VAR content>
+			{{ e.content | safe }}
 			<div class="clearBoth"></div>
 		</div>
 		<div class="entry-utility">
-			<span class="cat-links"><a href="<TMPL_VAR link ESCAPE="HTML">">by <TMPL_VAR channel_name> on <TMPL_VAR date><TMPL_IF category> tagged with <TMPL_VAR category></TMPL_IF></a></span>
+			<span class="cat-links"><a href="{{ e.link }}">by {{ e.channel_name }} on {{ e.date }}{% if e.category %} tagged with {{ e.category }}{% endif %}</a></span>
 		</div>
 	</div><!-- .post -->
-</TMPL_LOOP>
+{% endfor %}
 
 			</div><!-- #content -->
 		</div><!-- #container -->
@@ -88,11 +82,11 @@
 				<li class="widgetcontainer widget_extended-categories">
 					<h3 class="widgettitle">Feeds</h3>
 					<ul>
-					<TMPL_LOOP Channels>
+					{% for c in channels %}
 						<li>
-							<a href="<TMPL_VAR url ESCAPE="HTML">" title="subscribe"><img src="images/feed-icon-10x10.png" alt="(feed)" /></a> <a <TMPL_IF link>href="<TMPL_VAR link ESCAPE="HTML">" </TMPL_IF><TMPL_IF message>class="message" title="<TMPL_VAR message ESCAPE="HTML">"</TMPL_IF><TMPL_UNLESS message>title="<TMPL_VAR title_plain ESCAPE="HTML">"</TMPL_UNLESS>><TMPL_VAR name></a>
+							<a href="{{ c.url }}" title="subscribe"><img src="/ubuntu/images/feed-icon-10x10.png" alt="(feed)" /></a> <a {% if c.link %}href="{{ c.link }}" {% endif %}title="{{ c.title }}">{{ c.name }}</a>
 						</li>
-					</TMPL_LOOP>
+					{% endfor %}
 					</ul>
 				</li>
 			</ul>
