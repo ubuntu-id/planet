@@ -28,9 +28,13 @@ python3 -m venv .venv && .venv/bin/pip install -r requirements.txt
 
 Feed yang gagal diambil dilewati dan dicatat di stderr. Hasilnya bisa disajikan oleh web server statis apa pun.
 
-### Cloudflare Pages
+### Cloudflare (Workers Builds / Pages)
 
+Situs ini statis. `wrangler.jsonc` mengunggah folder `public/` sebagai static assets.
+
+- Project name: `planet-ubuntu-id` (huruf kecil, angka, dan tanda hubung saja)
 - Build command: `pip install -r requirements.txt && python build.py`
-- Build output directory: `public`
+- Deploy command: `npx wrangler deploy`
+- Preview command: `npx wrangler versions upload`
 - Python versi 3.13 dipilih lewat `.python-version`
 - Karena isinya statis, jadwalkan rebuild berkala dengan Deploy Hook (Settings > Builds) yang dipanggil `POST` dari cron.
