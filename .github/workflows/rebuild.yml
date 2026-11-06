@@ -1,0 +1,23 @@
+name: Rebuild planet
+
+# Memicu build ulang di Cloudflare lewat Deploy Hook supaya isi planet ikut feed terbaru.
+# Cron hanya berjalan dari branch default (master).
+on:
+  schedule:
+    - cron: "17 */6 * * *"
+  workflow_dispatch:
+
+jobs:
+  rebuild:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Panggil Deploy Hook Cloudflare
+        env:
+          HOOK_URL: ${{ secrets.CLOUDFLARE_DEPLOY_HOOK }}
+        run: |
+          if [ -z "$HOOK_URL" ]; then
+            echo "Secret CLOUDFLARE_DEPLOY_HOOK belum diisi" >&2
+            exit 1
+          fi
+          curl -fsS -X POST "$HOOK_URL" > /dev/null
+          echo "Build ulang dipicu"
