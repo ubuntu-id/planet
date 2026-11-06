@@ -8,10 +8,9 @@ If you are using Ubuntu and want to share your blog, please let us know
 
 You need to:
 1. Create [Launchpad](https://launchpad.net) account
-2. Sign [Ubuntu CoC](http://wiki.ubuntu-id.org/DokumentasiKomunitas/Tandatangan-CoC)
-3. Create ticket/bug in [Ubuntu ID Launchpad page](https://bugs.launchpad.net/ubuntu-id-web/+filebug)
-4. Inform what your full name and feed address
-5. (optional) Hackergotchi if you want you face appear in planet
+2. Sign [Ubuntu CoC](https://launchpad.net/codeofconduct)
+3. Open a pull request that adds your feed to `config.ini`, using the pull request template
+4. (optional) Hackergotchi if you want you face appear in planet (put the image in `heads/`)
 
 ## etc
 Planet Ubuntu ID is using planet venus and Ubuntu Theme, all copyrights
