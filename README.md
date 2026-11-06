@@ -37,4 +37,4 @@ Situs ini statis. `wrangler.jsonc` mengunggah folder `public/` sebagai static as
 - Deploy command: `npx wrangler deploy`
 - Preview command: `npx wrangler versions upload`
 - Python versi 3.13 dipilih lewat `.python-version`
-- Karena isinya statis, jadwalkan rebuild berkala dengan Deploy Hook (Settings > Builds) yang dipanggil `POST` dari cron.
+- Rebuild berkala: `.github/workflows/rebuild.yml` memanggil Deploy Hook tiap 6 jam. Simpan URL hook sebagai secret `CLOUDFLARE_DEPLOY_HOOK` (Settings > Secrets and variables > Actions).
