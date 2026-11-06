@@ -28,5 +28,6 @@ Butuh jaringan dan memakan 1 sampai 2 menit karena ada feed yang lambat. Feed ya
 ## Deploy
 
 - Push ke `master` memicu build Cloudflare (build: `pip install -r requirements.txt && python build.py`, deploy: `npx wrangler deploy`).
+- Build branch non-production memakai `npx wrangler preview`, yang mewajibkan blok `"previews": {}` di `wrangler.jsonc`. Jangan dihapus.
 - `.github/workflows/rebuild.yml` memanggil Deploy Hook tiap 6 jam lewat secret `CLOUDFLARE_DEPLOY_HOOK`. Jangan menaruh URL hook di repo atau chat.
 - Cron GitHub hanya jalan dari `master`.
