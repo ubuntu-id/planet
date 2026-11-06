@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rss version="2.0">
+
+<channel>
+	<title>{{ name }}</title>
+	<link>{{ link }}</link>
+	<language>id</language>
+	<description>{{ name }} - {{ link }}</description>
+
+{% for e in items %}
+<item>
+	<title>{{ e.channel_name }}{% if e.title_plain %}: {{ e.title_plain }}{% endif %}</title>
+	<guid>{{ e.id }}</guid>
+	<link>{{ e.link }}</link>
+	{% if e.content %}
+	<description>{{ e.content }}</description>
+	{% endif %}
+	<pubDate>{{ e.date_822 }}</pubDate>
+</item>
+{% endfor %}
+
+</channel>
+</rss>

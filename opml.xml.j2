@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<opml version="1.1">
+  <head>
+    <title>{{ name }}</title>
+    <dateModified>{{ now_822 }}</dateModified>
+    <ownerName>{{ owner_name }}</ownerName>
+    <ownerEmail>{{ owner_email }}</ownerEmail>
+  </head>
+  <body>
+{% for c in channels %}
+    <outline type="rss" text="{{ c.name }}" title="{{ c.title }}" xmlUrl="{{ c.url }}"/>
+{% endfor %}
+  </body>
+</opml>

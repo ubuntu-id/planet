@@ -1,0 +1,33 @@
+name: CI
+
+on:
+  pull_request:
+  push:
+    branches: [master]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version-file: .python-version
+          cache: pip
+      - run: pip install -r requirements.txt
+      - name: Cek syntax Python dan config.ini
+        run: |
+          python -m py_compile build.py
+          python -c "import configparser; c = configparser.ConfigParser(interpolation=None); c.read('config.ini', encoding='utf-8'); assert c['Planet']['name']; print(len(c.sections()), 'section')"
+      - name: Build
+        run: python build.py
+      - name: Cek hasil build
+        run: |
+          python - <<'PY'
+          import xml.dom.minidom as m
+          for f in ("rss20.xml", "opml.xml"):
+              m.parse("public/" + f)
+          html = open("public/index.html", encoding="utf-8").read()
+          assert html.count('class="hentry post"') > 0, "index.html tanpa entri"
+          print("OK")
+          PY
