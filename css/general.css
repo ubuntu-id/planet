@@ -160,6 +160,31 @@
 	overflow-Y: hidden;  /*--Hides vertical scroll created by IE--*/
 }
 
+.post .entry-content table
+{
+	border-collapse: collapse;
+	border-spacing: 0;
+	margin: 8px 0;
+	display: block; /*--Tabel yang lebih lebar dari kolom bisa digulir, tidak meluap--*/
+	max-width: 100%;
+	overflow-x: auto;
+}
+
+.post .entry-content th,
+.post .entry-content td
+{
+	border: 1px solid #aea79f;
+	padding: 4px 8px;
+	text-align: left;
+	vertical-align: top;
+}
+
+.post .entry-content th
+{
+	background: #f0f0f0;
+	font-weight: bold;
+}
+
 .post .entry-utility
 {
 	margin: 8px 0 0;
